@@ -12,6 +12,7 @@ namespace Project_Backend.data
         : base(options)
         {
             _connectionstrings = connectionstrings.Value;
+            
         }
     }
 }
