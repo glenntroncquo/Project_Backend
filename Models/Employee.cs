@@ -22,7 +22,7 @@ namespace Project_Backend.Models
         public string Email { get; set; }
         [Required]
         public string HireDate { get; set; }
-        public ICollection<Project> Project { get; set; }
-        public ICollection<Department> Department { get; set; }
+        List<EmployeeProject> EmployeeProject { get; set; }
+        List<DepartmentEmployee> DepartmentEmployees { get; set; }
     }
 }

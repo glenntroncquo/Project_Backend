@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Backend.data;
 
 namespace Project_Backend.Migrations
 {
     [DbContext(typeof(ProjectBackendContext))]
-    partial class ProjectBackendContextModelSnapshot : ModelSnapshot
+    [Migration("20210429144449_seedingggù")]
+    partial class seedingggù
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,55 +38,18 @@ namespace Project_Backend.Migrations
                     b.HasData(
                         new
                         {
-                            DepartmentId = new Guid("cdd2b38a-ef2b-4036-98b4-dbedfa8c5682"),
+                            DepartmentId = new Guid("3ac22041-3f85-40d7-9620-0a5f86981586"),
                             DepartmentName = "Weide"
                         },
                         new
                         {
-                            DepartmentId = new Guid("c95f2ab1-770a-470c-9340-eef2c5bc755b"),
+                            DepartmentId = new Guid("2c52d3df-f4e7-493d-bde4-867bae00c460"),
                             DepartmentName = "Penta"
                         },
                         new
                         {
-                            DepartmentId = new Guid("22a030ab-3afb-4ab3-9bce-0085b1a451e0"),
+                            DepartmentId = new Guid("cf51e187-b796-49bf-83a9-586826584f39"),
                             DepartmentName = "Obeee"
-                        });
-                });
-
-            modelBuilder.Entity("Project_Backend.Models.DepartmentEmployee", b =>
-                {
-                    b.Property<Guid>("EmployeeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("EmployeeId", "DepartmentId");
-
-                    b.HasIndex("DepartmentId");
-
-                    b.ToTable("DepartmentEmployees");
-
-                    b.HasData(
-                        new
-                        {
-                            EmployeeId = new Guid("2df20a1e-d5ac-4af6-8b80-78398790810a"),
-                            DepartmentId = new Guid("cdd2b38a-ef2b-4036-98b4-dbedfa8c5682")
-                        },
-                        new
-                        {
-                            EmployeeId = new Guid("2df20a1e-d5ac-4af6-8b80-78398790810a"),
-                            DepartmentId = new Guid("c95f2ab1-770a-470c-9340-eef2c5bc755b")
-                        },
-                        new
-                        {
-                            EmployeeId = new Guid("f4a96a61-9d10-4ed1-b49d-8ee45c3cb4e1"),
-                            DepartmentId = new Guid("c95f2ab1-770a-470c-9340-eef2c5bc755b")
-                        },
-                        new
-                        {
-                            EmployeeId = new Guid("b625c565-ddfa-4ef9-b765-5238fd298cf5"),
-                            DepartmentId = new Guid("22a030ab-3afb-4ab3-9bce-0085b1a451e0")
                         });
                 });
 
@@ -123,7 +88,7 @@ namespace Project_Backend.Migrations
                     b.HasData(
                         new
                         {
-                            EmployeeId = new Guid("2df20a1e-d5ac-4af6-8b80-78398790810a"),
+                            EmployeeId = new Guid("bf2d081c-7247-4f44-8e35-3557d131ab9b"),
                             Age = 18,
                             Email = "johndoe@gmail.com",
                             FirstName = "John",
@@ -133,7 +98,7 @@ namespace Project_Backend.Migrations
                         },
                         new
                         {
-                            EmployeeId = new Guid("f4a96a61-9d10-4ed1-b49d-8ee45c3cb4e1"),
+                            EmployeeId = new Guid("8594380c-fc31-458d-aac3-c247938f902f"),
                             Age = 18,
                             Email = "charliechoplin@gmail.com",
                             FirstName = "Charlie",
@@ -143,7 +108,7 @@ namespace Project_Backend.Migrations
                         },
                         new
                         {
-                            EmployeeId = new Guid("b625c565-ddfa-4ef9-b765-5238fd298cf5"),
+                            EmployeeId = new Guid("d32df572-23ab-4516-b58b-5ba507a097e5"),
                             Age = 18,
                             Email = "rickertdemeester@gmail.com",
                             FirstName = "Rickert",
@@ -170,23 +135,23 @@ namespace Project_Backend.Migrations
                     b.HasData(
                         new
                         {
-                            ProjectId = new Guid("6877b879-c728-474a-a699-7a13662826eb"),
-                            EmployeeId = new Guid("2df20a1e-d5ac-4af6-8b80-78398790810a")
+                            ProjectId = new Guid("1cd69d9b-c4b0-4afd-86f5-8dec5cd0f228"),
+                            EmployeeId = new Guid("bf2d081c-7247-4f44-8e35-3557d131ab9b")
                         },
                         new
                         {
-                            ProjectId = new Guid("c2afa3bc-56e7-4c5e-9799-321122b2283f"),
-                            EmployeeId = new Guid("2df20a1e-d5ac-4af6-8b80-78398790810a")
+                            ProjectId = new Guid("53c29d7c-0fc5-4584-9359-58d7283b812b"),
+                            EmployeeId = new Guid("bf2d081c-7247-4f44-8e35-3557d131ab9b")
                         },
                         new
                         {
-                            ProjectId = new Guid("c2afa3bc-56e7-4c5e-9799-321122b2283f"),
-                            EmployeeId = new Guid("f4a96a61-9d10-4ed1-b49d-8ee45c3cb4e1")
+                            ProjectId = new Guid("53c29d7c-0fc5-4584-9359-58d7283b812b"),
+                            EmployeeId = new Guid("8594380c-fc31-458d-aac3-c247938f902f")
                         },
                         new
                         {
-                            ProjectId = new Guid("7a5d6b35-70a9-45be-bbc7-c46353021615"),
-                            EmployeeId = new Guid("b625c565-ddfa-4ef9-b765-5238fd298cf5")
+                            ProjectId = new Guid("0ae767ca-651c-415f-bf26-ca7b1306d9c4"),
+                            EmployeeId = new Guid("d32df572-23ab-4516-b58b-5ba507a097e5")
                         });
                 });
 
@@ -223,27 +188,27 @@ namespace Project_Backend.Migrations
                     b.HasData(
                         new
                         {
-                            LocationId = new Guid("3d0d37e8-9b98-4546-8211-1ac4db9c50b4"),
+                            LocationId = new Guid("e1c1bd35-a410-408b-82f0-4df8e66b681f"),
                             City = "Kortrijk",
-                            DepartmentId = new Guid("cdd2b38a-ef2b-4036-98b4-dbedfa8c5682"),
+                            DepartmentId = new Guid("3ac22041-3f85-40d7-9620-0a5f86981586"),
                             HouseNumber = 14,
                             PostalCode = 8000,
                             StreetName = "Kortrijkstraat"
                         },
                         new
                         {
-                            LocationId = new Guid("884d635c-15f3-47cd-9f15-b3f74c21b74b"),
+                            LocationId = new Guid("92a99e7b-7ddb-417d-8510-9e4a33d863c6"),
                             City = "Kortrijk",
-                            DepartmentId = new Guid("c95f2ab1-770a-470c-9340-eef2c5bc755b"),
+                            DepartmentId = new Guid("2c52d3df-f4e7-493d-bde4-867bae00c460"),
                             HouseNumber = 18,
                             PostalCode = 8000,
                             StreetName = "Kortrijkstraat"
                         },
                         new
                         {
-                            LocationId = new Guid("e300650c-f7f4-4d0c-9091-258450c67ee0"),
+                            LocationId = new Guid("c3f3b9b8-111a-4443-b980-b942dd2532ad"),
                             City = "Kortrijk",
-                            DepartmentId = new Guid("22a030ab-3afb-4ab3-9bce-0085b1a451e0"),
+                            DepartmentId = new Guid("cf51e187-b796-49bf-83a9-586826584f39"),
                             HouseNumber = 20,
                             PostalCode = 8000,
                             StreetName = "Kortrijkstraat"
@@ -269,41 +234,22 @@ namespace Project_Backend.Migrations
                     b.HasData(
                         new
                         {
-                            ProjectId = new Guid("6877b879-c728-474a-a699-7a13662826eb"),
+                            ProjectId = new Guid("1cd69d9b-c4b0-4afd-86f5-8dec5cd0f228"),
                             Description = "Make a design",
                             ProjectName = "Design"
                         },
                         new
                         {
-                            ProjectId = new Guid("c2afa3bc-56e7-4c5e-9799-321122b2283f"),
+                            ProjectId = new Guid("53c29d7c-0fc5-4584-9359-58d7283b812b"),
                             Description = "Make a frontend",
                             ProjectName = "Frontend"
                         },
                         new
                         {
-                            ProjectId = new Guid("7a5d6b35-70a9-45be-bbc7-c46353021615"),
+                            ProjectId = new Guid("0ae767ca-651c-415f-bf26-ca7b1306d9c4"),
                             Description = "Make a backend",
                             ProjectName = "Backend"
                         });
-                });
-
-            modelBuilder.Entity("Project_Backend.Models.DepartmentEmployee", b =>
-                {
-                    b.HasOne("Project_Backend.Models.Department", "Department")
-                        .WithMany("DepartmentEmployee")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Backend.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Department");
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Project_Backend.Models.EmployeeProject", b =>
@@ -338,8 +284,6 @@ namespace Project_Backend.Migrations
 
             modelBuilder.Entity("Project_Backend.Models.Department", b =>
                 {
-                    b.Navigation("DepartmentEmployee");
-
                     b.Navigation("Location");
                 });
 

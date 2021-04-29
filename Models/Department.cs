@@ -10,6 +10,6 @@ namespace Project_Backend.Models
         [Required]
         public string DepartmentName { get; set; }
         public Location Location { get; set; }
-        public ICollection<Employee> Employee { get; set; }
+        public List<DepartmentEmployee> DepartmentEmployee { get; set; }
     }
 }
