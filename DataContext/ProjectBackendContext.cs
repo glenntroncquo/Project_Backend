@@ -166,9 +166,7 @@ namespace Project_Backend.data
             modelBuilder.Entity<Project>().HasData(project1, project2, project3);
 
             modelBuilder.Entity<DepartmentEmployee>().HasData(departmentEmployees);
-
             modelBuilder.Entity<EmployeeProject>().HasData(employeeProjects);
-
         }
     }
 }
