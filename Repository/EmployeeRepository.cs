@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Project_Backend.data;
@@ -10,6 +11,7 @@ namespace Project_Backend.Repository
     public interface IEmployeeRepository 
     {
         Task<List<Employee>> GetEmployees();
+        Task<Employee> GetEmployee(Guid employeeId);
     }
     public class EmployeeRepository : IEmployeeRepository
     {
@@ -23,6 +25,11 @@ namespace Project_Backend.Repository
         public async Task<List<Employee>> GetEmployees()
         {
             return await _context.Employees.ToListAsync();
+        }
+
+        public async Task<Employee> GetEmployee(Guid employeeId)
+        {
+            return await _context.Employees.Where(e => e.EmployeeId == employeeId).SingleOrDefaultAsync();
         }
     }
 }

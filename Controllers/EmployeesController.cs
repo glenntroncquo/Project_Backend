@@ -41,11 +41,11 @@ namespace Project_Backend.Controllers
         // get employee by id
         [HttpGet]
         [Route("employee/{employeeId}")]
-        public async Task<ActionResult<List<Employee>>> GetEmployee(Guid employeeId)
+        public async Task<ActionResult<List<EmployeeDTO>>> GetEmployee(Guid employeeId)
         {
 
             try{
-                return await _employeeService.GetEmployees();
+                return new OkObjectResult(await _employeeService.GetEmployee(employeeId));
             }
             catch(Exception ex){
                 throw ex;
