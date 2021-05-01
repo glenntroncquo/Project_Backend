@@ -12,6 +12,7 @@ namespace Project_Backend.Repository
     {
         Task<List<Department>> GetDepartments();
         Task<Department> GetDepartment(Guid departmentId);
+        Task<List<Location>> GetLocations();
     }
     public class DepartmentRepository : IDepartmentRepository
     {
@@ -31,6 +32,11 @@ namespace Project_Backend.Repository
         public async Task<Department> GetDepartment(Guid departmentId)
         {
              return await _context.Departments.Where(e => e.DepartmentId == departmentId).SingleOrDefaultAsync();
+        }
+
+        public async Task<List<Location>> GetLocations()
+        {
+            return await _context.Locations.ToListAsync();
         }
     }
 }

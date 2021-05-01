@@ -18,6 +18,7 @@ namespace Project_Backend.Services
         Task<List<Project>> GetProjects();
         Task<Project> AddProject(Project project);
         Task DeleteProject(Guid projectId);
+        Task<List<Location>> GetLocations();
     }
 
     public class EmployeeService : IEmployeeService
@@ -133,6 +134,16 @@ namespace Project_Backend.Services
         // change project
 
         // get locations
+
+        public async Task<List<Location>> GetLocations()
+        {
+            try{
+                return await _departmentRepository.GetLocations();
+            }
+            catch(Exception ex){
+                throw ex;
+            } 
+        }
         
 
 

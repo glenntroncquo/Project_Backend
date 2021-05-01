@@ -147,10 +147,11 @@ namespace Project_Backend.Controllers
         // get locations
         [HttpGet]
         [Route("locations")]
-        public async Task<Action<List<Location>>> GetLocations() 
+        public async Task<ActionResult<List<Location>>> GetLocations() 
         {
             try{
-                await _employeeService
+                return new OkObjectResult(await _employeeService.GetLocations());
+                
             }
             catch{
                 return new StatusCodeResult(500);
