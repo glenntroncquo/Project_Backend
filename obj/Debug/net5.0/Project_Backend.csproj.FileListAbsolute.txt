@@ -22,7 +22,6 @@ C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bi
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -62,3 +61,4 @@ C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\ob
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\appsettings.Docker.json
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

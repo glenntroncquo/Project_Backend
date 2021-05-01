@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using Project_Backend.Services;
 
 namespace Project_Backend.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     public class EmployeesController : ControllerBase
@@ -24,6 +26,7 @@ namespace Project_Backend.Controllers
         }
 
         // get all employees
+        [AllowAnonymous]
         [HttpGet]
         [Route("employees")]
         public async Task<ActionResult<List<EmployeeDepartmentDTO>>> GetEmployees(bool includeDepartments = false)
@@ -38,6 +41,7 @@ namespace Project_Backend.Controllers
         }
 
         // get employee by id
+        [AllowAnonymous]
         [HttpGet]
         [Route("employee/{employeeId}")]
         public async Task<ActionResult<List<EmployeeDTO>>> GetEmployee(Guid employeeId)
@@ -52,6 +56,7 @@ namespace Project_Backend.Controllers
         }
 
         // add an employee
+        [AllowAnonymous]
         [HttpPost]
         [Route("employees")]
         public async Task<ActionResult<EmployeeDTO>> AddEmployee(Employee employee)
@@ -79,6 +84,7 @@ namespace Project_Backend.Controllers
         }
 
         // get departments
+        [AllowAnonymous]
         [HttpGet]
         [Route("departments")]
         public async Task<ActionResult<List<Department>>> GetDepartments()
@@ -92,6 +98,7 @@ namespace Project_Backend.Controllers
         }
 
         // get department by id
+        [AllowAnonymous]
         [HttpGet]
         [Route("department/{departmentId}")]
         public async Task<ActionResult<Department>> GetDepartment(Guid departmentId)
@@ -105,6 +112,7 @@ namespace Project_Backend.Controllers
         }
 
         // get projects
+        [AllowAnonymous]
         [HttpGet]
         [Route("projects")]
         public async Task<ActionResult<Project>> GetProjects()
@@ -118,6 +126,7 @@ namespace Project_Backend.Controllers
         }
 
         // add project
+        [AllowAnonymous]
         [HttpPost]
         [Route("projects")]
         public async Task<ActionResult<Project>> AddProject(Project project)
@@ -145,6 +154,7 @@ namespace Project_Backend.Controllers
         }
 
         // get locations
+        [AllowAnonymous]
         [HttpGet]
         [Route("locations")]
         public async Task<ActionResult<List<Location>>> GetLocations() 
