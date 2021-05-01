@@ -103,7 +103,20 @@ namespace Project_Backend.Controllers
                 return new StatusCodeResult(500);
             }
         }
-        
+
+        // get projects
+        [HttpGet]
+        [Route("projects")]
+        public async Task<ActionResult<Project>> GetProjects()
+        {
+            try{
+                return new OkObjectResult(await _employeeService.GetProjects());
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+            
+        }
 
     }
 }

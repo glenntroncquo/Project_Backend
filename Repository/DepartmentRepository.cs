@@ -23,7 +23,9 @@ namespace Project_Backend.Repository
 
         public async Task<List<Department>> GetDepartments()
         {
-            return await _context.Departments.ToListAsync();
+            // return await _context.Departments.ToListAsync();
+
+            return await _context.Departments.Include(d => d.Location).ToListAsync<Department>();
         }
 
         public async Task<Department> GetDepartment(Guid departmentId)

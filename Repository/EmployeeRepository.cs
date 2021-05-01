@@ -27,7 +27,10 @@ namespace Project_Backend.Repository
         public async Task<List<Employee>> GetEmployees(bool includeDepartments)
         {
             if(includeDepartments)
-            return await _context.Employees.Include(e => e.DepartmentEmployees).ThenInclude(e => e.Department).ToListAsync();
+            return await _context.Employees.Include(e => e.DepartmentEmployees)
+            .ThenInclude(e => e.Department)
+            .ThenInclude(c => c.Location)
+            .ToListAsync();
 
             else return await _context.Employees.ToListAsync();
         }
