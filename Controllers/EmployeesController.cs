@@ -26,15 +26,14 @@ namespace Project_Backend.Controllers
         // get all employees
         [HttpGet]
         [Route("employees")]
-        public async Task<ActionResult<List<Employee>>> GetEmployees()
+        public async Task<ActionResult<List<EmployeeDepartmentDTO>>> GetEmployees(bool includeDepartments = false)
         {
 
             try{
-                return new OkObjectResult(await _employeeService.GetEmployees());
-                // return await _employeeService.GetEmployees();
+                return new OkObjectResult(await _employeeService.GetEmployees(includeDepartments));
             }
-            catch(Exception ex){
-                throw ex;
+            catch{
+                return new StatusCodeResult(500);
             }
         }
 
@@ -47,24 +46,22 @@ namespace Project_Backend.Controllers
             try{
                 return new OkObjectResult(await _employeeService.GetEmployee(employeeId));
             }
-            catch(Exception ex){
-                throw ex;
+            catch{
+                return new StatusCodeResult(500);
             }
         }
 
-        // search employee by name
-        // [HttpGet]
-        // [Route("employee")]
-        // public async Task<ActionResult<List<Employee>>> SearchEmployees(string name)
-        // {
-        //     try{
-        //         return new OkObjectResult(await );
-        //     }
-        //     catch(Exception ex){
-        //         throw ex;
-        //     }
-        // }
-
+        [HttpPost]
+        [Route("employees")]
+        public async Task<ActionResult<EmployeeDTO>> AddEmployee(Employee employee)
+        {
+            try{
+                return new OkObjectResult(await _employeeService.AddEmployee(employee));
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
 
         // [HttpGet]
         // [Route("departments")]

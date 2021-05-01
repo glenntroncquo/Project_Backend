@@ -9,8 +9,10 @@ namespace Project_Backend.Services
 {
     public interface IEmployeeService
     {
-        Task<List<Employee>> GetEmployees();
+        Task<List<EmployeeDepartmentDTO>> GetEmployees(bool includeDepartments);
         Task<EmployeeDTO> GetEmployee(Guid employeeId);
+        Task<EmployeeDTO> AddEmployee(Employee employee);
+
     }
 
     public class EmployeeService : IEmployeeService
@@ -23,10 +25,10 @@ namespace Project_Backend.Services
             _mapper = mapper;
         }
 
-        public async Task<List<Employee>> GetEmployees()
+        public async Task<List<EmployeeDepartmentDTO>> GetEmployees(bool includeDepartments)
         {
             try{
-                return await _employeeRepository.GetEmployees();
+                return _mapper.Map<List<EmployeeDepartmentDTO>>(await _employeeRepository.GetEmployees(includeDepartments));
             }
             catch(System.Exception ex){
                 throw ex;
@@ -39,6 +41,17 @@ namespace Project_Backend.Services
                 return _mapper.Map<EmployeeDTO>(await _employeeRepository.GetEmployee(employeeId));
             }
             catch(System.Exception ex){
+                throw ex;
+            }
+        }
+
+        public async Task<EmployeeDTO> AddEmployee(Employee employee)
+        {
+            try{
+                employee.EmployeeId = Guid.NewGuid();
+                return _mapper.Map<EmployeeDTO>(await _employeeRepository.AddEmployee(employee));
+            }
+            catch(Exception ex){
                 throw ex;
             }
         }

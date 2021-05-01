@@ -10,6 +10,9 @@ namespace Project_Backend.DTO
         public AutoMapping()
         {
             CreateMap<Employee, EmployeeDTO>();
+            CreateMap<Employee, EmployeeDepartmentDTO>();
+            CreateMap<EmployeeDepartmentDTO, Employee>();
+            
         }
     }
 }

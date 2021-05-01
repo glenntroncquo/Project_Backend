@@ -5,10 +5,10 @@ namespace Project_Backend.Models
 {
     public class DepartmentEmployee 
     {
-  
-        public Employee Employee { get; set; }
+        [JsonIgnore]
         public Guid EmployeeId { get; set; }
-        public Department Department { get; set; }
+        [JsonIgnore]
         public Guid DepartmentId { get; set; }
+        public Department Department { get; set; }
     }
 }

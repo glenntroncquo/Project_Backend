@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Project_Backend.Models 
 {
@@ -15,14 +16,15 @@ namespace Project_Backend.Models
         [Range(18,120)]
         public int Age { get; set; }
         [Required]
-        [Phone]
         public int PhoneNumber { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
         public string HireDate { get; set; }
-        List<EmployeeProject> EmployeeProject { get; set; }
-        List<DepartmentEmployee> DepartmentEmployees { get; set; }
+        [JsonIgnore]
+        public List<EmployeeProject> EmployeeProject { get; set; }
+        [JsonIgnore]
+        public List<DepartmentEmployee> DepartmentEmployees { get; set; }
     }
 }

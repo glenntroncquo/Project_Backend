@@ -10,8 +10,9 @@ namespace Project_Backend.Repository
 {
     public interface IEmployeeRepository 
     {
-        Task<List<Employee>> GetEmployees();
+        Task<List<Employee>> GetEmployees(bool includeDepartments);
         Task<Employee> GetEmployee(Guid employeeId);
+        Task<Employee> AddEmployee(Employee employee);
     }
     public class EmployeeRepository : IEmployeeRepository
     {
@@ -22,14 +23,24 @@ namespace Project_Backend.Repository
             
         }
 
-        public async Task<List<Employee>> GetEmployees()
+        public async Task<List<Employee>> GetEmployees(bool includeDepartments)
         {
-            return await _context.Employees.ToListAsync();
+            if(includeDepartments)
+            return await _context.Employees.Include(e => e.DepartmentEmployees).ThenInclude(e => e.Department).ToListAsync();
+
+            else return await _context.Employees.ToListAsync();
         }
 
         public async Task<Employee> GetEmployee(Guid employeeId)
         {
             return await _context.Employees.Where(e => e.EmployeeId == employeeId).SingleOrDefaultAsync();
+        }
+
+        public async Task<Employee> AddEmployee(Employee employee)
+        {
+            await _context.Employees.AddAsync(employee);
+            await _context.SaveChangesAsync();
+            return employee;
         }
     }
 }
