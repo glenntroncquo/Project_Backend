@@ -45,6 +45,7 @@ namespace Project_Backend
 
             services.AddTransient<IProjectBackendContext, ProjectBackendContext>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
             services.AddTransient<IEmployeeService, EmployeeService>();
         }
 

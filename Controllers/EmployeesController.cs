@@ -64,6 +64,7 @@ namespace Project_Backend.Controllers
             }
         }
 
+        // delete an employee
         [HttpDelete]
         [Route("employee/{employeeId}")]
         public async Task<ActionResult> DeleteEmployee(Guid employeeId)
@@ -77,28 +78,31 @@ namespace Project_Backend.Controllers
             }
         }
 
-        // [HttpGet]
-        // [Route("departments")]
-        // public async Task<ActionResult<Department>> GetDepartments()
-        // {
-        //     try{
+        // get departments
+        [HttpGet]
+        [Route("departments")]
+        public async Task<ActionResult<List<Department>>> GetDepartments()
+        {
+            try{
+                return new OkObjectResult(await _employeeService.GetDepartments());
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
 
-        //     }
-        //     catch{
-
-        //     }
-        // }
-
-        // [HttpGet]
-        // public async Task<ActionResult<Project>> GetProject()
-        // {
-        //     try{
-
-        //     }
-        //     catch{
-
-        //     }
-        // }
+        // get department by id
+        [HttpGet]
+        [Route("department/{departmentId}")]
+        public async Task<ActionResult<Department>> GetDepartment(Guid departmentId)
+        {
+            try{
+                return new OkObjectResult(await _employeeService.GetDepartment(departmentId));
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
         
 
     }

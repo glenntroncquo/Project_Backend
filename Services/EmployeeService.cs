@@ -13,15 +13,20 @@ namespace Project_Backend.Services
         Task<EmployeeDTO> GetEmployee(Guid employeeId);
         Task<EmployeeDTO> AddEmployee(Employee employee);
         Task DeleteEmployee(Guid employeeId);
+        Task<List<Department>> GetDepartments();
+        Task<Department> GetDepartment(Guid departmentId);
 
     }
 
     public class EmployeeService : IEmployeeService
     {
         private IEmployeeRepository _employeeRepository;
+        private IDepartmentRepository _departmentRepository;
         private IMapper _mapper;
-        public EmployeeService(IMapper mapper,IEmployeeRepository employeeRepository)
+
+        public EmployeeService(IMapper mapper,IDepartmentRepository departmentRepository,IEmployeeRepository employeeRepository)
         {
+            _departmentRepository = departmentRepository;
             _employeeRepository = employeeRepository;
             _mapper = mapper;
         }
@@ -61,6 +66,28 @@ namespace Project_Backend.Services
         {
             try{
                 await _employeeRepository.DeleteEmployee(employeeId);
+            }
+            catch(Exception ex){
+                throw ex;
+            }
+        }
+
+        // DEPARTMENT
+
+        public async Task<List<Department>> GetDepartments()
+        {
+            try{
+                return await _departmentRepository.GetDepartments();
+            }
+            catch(Exception ex){
+                throw ex;
+            }
+        }
+
+        public async Task<Department> GetDepartment(Guid departmentId)
+        {
+            try{
+                return await _departmentRepository.GetDepartment(departmentId);
             }
             catch(Exception ex){
                 throw ex;
