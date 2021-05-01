@@ -29,5 +29,15 @@ namespace Project_Backend.Services
             }
         }
 
+        // public async Task<Employee> GetEmployee(Guid employeeId)
+        // {
+        //     try{
+
+        //     }
+        //     catch{
+
+        //     }
+        // }
+
     }
 }

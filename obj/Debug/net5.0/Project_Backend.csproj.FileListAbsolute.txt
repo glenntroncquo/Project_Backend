@@ -60,3 +60,5 @@ C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\ob
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\obj\Debug\net5.0\Project_Backend.pdb
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\obj\Debug\net5.0\Project_Backend.genruntimeconfig.cache
 C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\appsettings.Docker.json
+C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Glenn\Documents\MCT_2\Semester_2\Backend_Development\Project_Backend\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

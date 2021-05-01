@@ -17,6 +17,7 @@ namespace Project_Backend.Repository
         public EmployeeRepository(IProjectBackendContext context)
         {
             _context = context;
+            
         }
 
         public async Task<List<Employee>> GetEmployees()

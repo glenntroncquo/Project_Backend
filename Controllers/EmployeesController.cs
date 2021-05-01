@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Project_Backend.data;
 using Project_Backend.Models;
 using Project_Backend.Services;
@@ -13,31 +14,34 @@ namespace Project_Backend.Controllers
     [Route("api")]
     public class EmployeesController : ControllerBase
     {
+        private readonly ILogger<EmployeesController> _logger;
         private readonly IEmployeeService _employeeService;
-        private ProjectBackendContext _content;
 
-        public EmployeesController(IEmployeeService employeeService, ProjectBackendContext context)
+        public EmployeesController(ILogger<EmployeesController> logger, IEmployeeService employeeService)
         {
-            _employeeService = employeeService;   
-            _content = context;
+            _logger = logger;
+            _employeeService = employeeService;
         }
 
+        // get all employees
         [HttpGet]
         [Route("employees")]
-        public async Task<List<Employee>> GetEmployees()
+        public async Task<ActionResult<List<Employee>>> GetEmployees()
         {
 
             try{
-                return await _employeeService.GetEmployees();
+                return new OkObjectResult(await _employeeService.GetEmployees());
+                // return await _employeeService.GetEmployees();
             }
             catch(Exception ex){
                 throw ex;
             }
         }
 
+        // get employee by id
         [HttpGet]
-        [Route("employee/{name}")]
-        public async Task<List<Employee>> GetEmployee()
+        [Route("employee/{employeeId}")]
+        public async Task<ActionResult<List<Employee>>> GetEmployee(Guid employeeId)
         {
 
             try{
@@ -47,6 +51,19 @@ namespace Project_Backend.Controllers
                 throw ex;
             }
         }
+
+        // search employee by name
+        // [HttpGet]
+        // [Route("employee")]
+        // public async Task<ActionResult<List<Employee>>> SearchEmployees(string name)
+        // {
+        //     try{
+        //         return new OkObjectResult(await );
+        //     }
+        //     catch(Exception ex){
+        //         throw ex;
+        //     }
+        // }
 
 
         // [HttpGet]
