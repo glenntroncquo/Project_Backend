@@ -12,6 +12,7 @@ namespace Project_Backend.Services
         Task<List<EmployeeDepartmentDTO>> GetEmployees(bool includeDepartments);
         Task<EmployeeDTO> GetEmployee(Guid employeeId);
         Task<EmployeeDTO> AddEmployee(Employee employee);
+        Task DeleteEmployee(Guid employeeId);
 
     }
 
@@ -50,6 +51,16 @@ namespace Project_Backend.Services
             try{
                 employee.EmployeeId = Guid.NewGuid();
                 return _mapper.Map<EmployeeDTO>(await _employeeRepository.AddEmployee(employee));
+            }
+            catch(Exception ex){
+                throw ex;
+            }
+        }
+
+        public async Task DeleteEmployee(Guid employeeId)
+        {
+            try{
+                await _employeeRepository.DeleteEmployee(employeeId);
             }
             catch(Exception ex){
                 throw ex;

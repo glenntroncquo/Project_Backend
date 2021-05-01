@@ -51,12 +51,26 @@ namespace Project_Backend.Controllers
             }
         }
 
+        // add an employee
         [HttpPost]
         [Route("employees")]
         public async Task<ActionResult<EmployeeDTO>> AddEmployee(Employee employee)
         {
             try{
                 return new OkObjectResult(await _employeeService.AddEmployee(employee));
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpDelete]
+        [Route("employee/{employeeId}")]
+        public async Task<ActionResult> DeleteEmployee(Guid employeeId)
+        {
+            try{
+                await _employeeService.DeleteEmployee(employeeId);
+                return Ok();
             }
             catch{
                 return new StatusCodeResult(500);

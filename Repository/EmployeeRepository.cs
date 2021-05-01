@@ -13,6 +13,7 @@ namespace Project_Backend.Repository
         Task<List<Employee>> GetEmployees(bool includeDepartments);
         Task<Employee> GetEmployee(Guid employeeId);
         Task<Employee> AddEmployee(Employee employee);
+        Task DeleteEmployee(Guid employeeId);
     }
     public class EmployeeRepository : IEmployeeRepository
     {
@@ -41,6 +42,15 @@ namespace Project_Backend.Repository
             await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
             return employee;
+        }
+
+        public async Task DeleteEmployee(Guid employeeId)
+        {
+            var employee = await _context.Employees.Where(e => e.EmployeeId == employeeId).SingleOrDefaultAsync<Employee>();
+            if(employee != null){
+                _context.Employees.Remove(employee);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
