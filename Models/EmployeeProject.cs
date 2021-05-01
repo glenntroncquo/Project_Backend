@@ -7,7 +7,9 @@ namespace Project_Backend.Models
     {
         public Guid EmployeeId { get; set; }
         public Employee Employee { get; set; }
+        [JsonIgnore]
         public Guid ProjectId { get; set; }
+        [JsonIgnore]
         public Project Project { get; set; }
     }
 }

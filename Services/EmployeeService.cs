@@ -16,6 +16,8 @@ namespace Project_Backend.Services
         Task<List<Department>> GetDepartments();
         Task<Department> GetDepartment(Guid departmentId);
         Task<List<Project>> GetProjects();
+        Task<Project> AddProject(Project project);
+        Task DeleteProject(Guid projectId);
     }
 
     public class EmployeeService : IEmployeeService
@@ -107,6 +109,31 @@ namespace Project_Backend.Services
             } 
         }
 
+        public async Task<Project> AddProject(Project project)
+        {
+            try{
+                project.ProjectId = Guid.NewGuid();
+                return await _projectRepository.AddProject(project);
+            }
+            catch(Exception ex){
+                throw ex;
+            } 
+        }
+    
+        public async Task DeleteProject(Guid projectId)
+        {
+            try{
+                await _projectRepository.DeleteProject(projectId);
+            }
+            catch(Exception ex){
+                throw ex;
+            } 
+        }
+
+        // change project
+
+        // get locations
+        
 
 
     }

@@ -115,7 +115,46 @@ namespace Project_Backend.Controllers
             catch{
                 return new StatusCodeResult(500);
             }
-            
+        }
+
+        // add project
+        [HttpPost]
+        [Route("projects")]
+        public async Task<ActionResult<Project>> AddProject(Project project)
+        {
+            try{
+                return new OkObjectResult(await _employeeService.AddProject(project));
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // delete project
+        [HttpDelete]
+        [Route("project/{projectId}")]
+        public async Task<ActionResult> DeleteProject(Guid projectId)
+        {
+            try{
+                await _employeeService.DeleteProject(projectId);
+                return Ok();
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // get locations
+        [HttpGet]
+        [Route("locations")]
+        public async Task<Action<List<Location>>> GetLocations() 
+        {
+            try{
+                await _employeeService
+            }
+            catch{
+                return new StatusCodeResult(500);
+            }  
         }
 
     }
