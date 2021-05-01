@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Project_Backend.Configuration;
 using Project_Backend.data;
+using Project_Backend.Repository;
+using Project_Backend.Services;
 
 namespace Project_Backend
 {
@@ -31,11 +33,16 @@ namespace Project_Backend
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
             services.AddDbContext<ProjectBackendContext>();
 
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_Backend", Version = "v1" });
             });
+
+            services.AddTransient<IProjectBackendContext, ProjectBackendContext>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

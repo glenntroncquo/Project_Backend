@@ -1,20 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Project_Backend.Configuration;
 using Project_Backend.Models;
 
 namespace Project_Backend.data
 {
-    public class ProjectBackendContext : DbContext
+    public interface IProjectBackendContext 
     {
-        public DbSet<Employee> Employee { get; set; }
-        public DbSet<Project> Project { get; set; }
-        public DbSet<Department> Department { get; set; }
-        public DbSet<Location> Location { get; set; }
+        DbSet<Employee> Employees { get; set; }
+        DbSet<Project> Projects { get; set; }
+        DbSet<Department> Departments { get; set; }
+        DbSet<DepartmentEmployee> DepartmentEmployees { get; set; }
+        DbSet<EmployeeProject> EmployeeProjects { get; set; }
+        DbSet<Location> Locations { get; set; }
+    }
+    public class ProjectBackendContext : DbContext, IProjectBackendContext
+    {
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<DepartmentEmployee> DepartmentEmployees { get; set; }
-        public DbSet<EmployeeProject> EmployeeProject { get; set; }
+        public DbSet<EmployeeProject> EmployeeProjects { get; set; }
 
         private ConnectionStrings _connectionstrings;
         public ProjectBackendContext(DbContextOptions options, IOptions<ConnectionStrings> connectionstrings) 
@@ -25,6 +36,7 @@ namespace Project_Backend.data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
             options.UseSqlServer(_connectionstrings.SQL);
         }
 
@@ -168,5 +180,6 @@ namespace Project_Backend.data
             modelBuilder.Entity<DepartmentEmployee>().HasData(departmentEmployees);
             modelBuilder.Entity<EmployeeProject>().HasData(employeeProjects);
         }
+
     }
 }
